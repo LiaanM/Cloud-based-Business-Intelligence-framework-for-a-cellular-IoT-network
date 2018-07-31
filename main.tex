@@ -1,0 +1,305 @@
+%
+\documentclass[a4paper,12pt,notitlepage,final]{report}
+\headheight=14.5pt
+\usepackage{import}
+\usepackage[english]{babel}
+% remove all ligatures
+%\usepackage{microtype}
+%\DisableLigatures{encoding = *, family = * }
+\usepackage{datetime}
+\usepackage{graphicx} % in order to import pdf graphics files
+\usepackage{pstricks} % for frontpage graphics import
+\usepackage{fancyhdr}
+\usepackage{watermark}
+\usepackage{amsfonts}
+\usepackage{enumitem}
+%\usepackage[T1]{fontenc}
+% Code highlighting
+\usepackage[chapter]{minted} 
+\renewcommand\listingscaption{Listing}
+\renewcommand\listoflistingscaption{Listings}
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+\newminted{cpp}{bgcolor=bg, linenos, frame=lines,rulecolor=\color{gray}, framerule=0.03cm,framesep=0.2cm, tabsize=4, fontsize=\footnotesize}
+\newminted{js}{bgcolor=bg, linenos, frame=lines,rulecolor=\color{gray}, framerule=0.03cm,framesep=0.2cm, tabsize=4, fontsize=\footnotesize}
+\newminted{mysql}{bgcolor=bg, linenos, frame=lines,rulecolor=\color{gray}, framerule=0.03cm,framesep=0.2cm, tabsize=4, fontsize=\footnotesize}
+% linebreak symbol
+%\usepackage{MnSymbol}
+%\renewcommand\lstlistingname{Listing}
+%\renewcommand\lstlistlistingname{Listings}
+%\lstset{tabsize=4}
+%\lstset{basicstyle=\small}
+%\lstset{backgroundcolor=\color{gray!10}} % background in a light gray
+%\lstset{frame=tb} % lines above and below
+%\lstset{rulecolor=\color{gray!50}} % colored in a slightly darker gray
+%\lstset{framexleftmargin=5pt}
+%\lstset{xleftmargin=5pt}
+%\lstset{prebreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\rhookswarrow}}}
+%\lstset{postbreak=\raisebox{0ex}[0ex][0ex]
+%        {\ensuremath{\rcurvearrowse\space}}}
+%\lstset{breaklines=true, breakatwhitespace=true}
+%\lstset{numbers=left, numberstyle=\scriptsize}
+%\lstset{fontadjust}
+
+\usepackage{ucs}
+% \usepackage[utf8x]{inputenc}
+\usepackage{epigraph} % for epigraph handling
+\usepackage[font=small,labelfont=bf,up]{caption} %adjust caption formatting
+
+% For table formatting
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{rotating}
+\usepackage{multirow}
+\usepackage{tabularx}
+
+\usepackage{natbib}     %'cite' package causes errors when combined with hyperref - thus using natbib
+
+\usepackage{subfigure}
+\usepackage{pgfplots}
+\pgfplotsset{compat=newest}
+\usepackage{bytefield}
+% For nomenclature
+\usepackage[intoc]{nomencl}
+\renewcommand{\nomname}{List of Abbreviations}
+\renewcommand{\nomlabel}[1]{\textbf{#1}}
+\renewcommand{\nompreamble}{\markboth{\uppercase{\nomname}}{\uppercase{\nomname}}}
+\makenomenclature
+
+% format captions
+\captionsetup[figure]{format=hang,justification=centering,singlelinecheck=false} % figures are centered
+\captionsetup[table]{format=hang,justification=justified,singlelinecheck=false} % tables are left justified
+%\captionsetup[lstlisting]{format=hang,justification=justified,singlelinecheck=false} % listings are left justified
+% Make figures bordered
+%\usepackage{float}
+%\floatstyle{boxed} 
+%\restylefloat{figure}
+
+% turn of those nasty overfull and underfull hboxes
+\hbadness=10000
+\hfuzz=50pt
+
+\usepackage[defaultlines=4,all]{nowidow}
+% take care of widows and orphans
+%\clubpenalty=9996
+%\widowpenalty=9999
+%\brokenpenalty=4991
+%\predisplaypenalty=10000
+%\postdisplaypenalty=1549
+%\displaywidowpenalty=1602
+
+%Define the IEEE reference style grouping etc. [1,2,3] or [1]-[4]
+\setcitestyle{square,comma,sort&compress}       %set some of the natbib options
+\bibpunct{[}{]}{,}{n}{}{,}{}
+
+% set section numbering depth
+\setcounter{secnumdepth}{4}
+\setcounter{tocdepth}{2}
+
+
+
+%*************************************************************************************************
+%------------------------------- Titles and authors-----------------------------------------------
+
+\title{Cloud based Business Intelligence framework for a cellular IoT network}
+\author{Leon William Moolman}
+\newcommand{\stuno}{24075477}
+\renewcommand{\date}{\monthname[\month] \the\year}
+
+%-----------------------pagestyle stuff & headers & footers-------------------------------------
+\pagestyle{fancy}
+\renewcommand{\chaptermark}[1]{\markboth{\chaptername\ \thechapter.\ #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\thesection.\ #1}{}}
+\rhead{\begin{scriptsize}\rightmark{}\end{scriptsize}}
+\lhead{\begin{scriptsize}\leftmark{}\end{scriptsize}}
+\cfoot{\vspace{-1pt}}
+\makeatletter
+\lfoot{\begin{scriptsize}\@title\end{scriptsize}}
+\makeatother
+\rfoot{\thepage{}}
+\renewcommand{\headrulewidth}{1pt}
+\renewcommand{\footrulewidth}{1pt}
+
+% Make figures prefer top rather than alone on a page
+\renewcommand{\topfraction}{0.85}
+\renewcommand{\textfraction}{0.1}
+\renewcommand{\floatpagefraction}{0.75}
+
+\newcommand{\strepie}{\noindent\rule{\textwidth}{.5pt}\\}
+
+%********************************************************************************************
+%----------------------------Beginning of the document----------------------------
+%********************************************************************************************
+
+\begin{document}
+
+% \thiswatermark{
+% \begin{pspicture}(3.78,26)(3.78,26)
+%     \includegraphics{TitlePage/frontpage.pdf}
+% \end{pspicture}}
+
+% \pdfbookmark[0]{Title Page}{title}
+\begin{titlepage}
+\centering
+{
+\hspace{1cm} \vspace{1cm} \\
+\makeatletter
+\begin{Huge} \textbf{\textit{\@title}} \end{Huge} \vspace{1.5cm} \\
+\makeatother
+
+\begin{large}
+by \vspace{0.6cm}\\
+\end{large}
+
+\begin{Large} 
+\makeatletter
+\textbf{\Large{\@author}}\\ 
+\makeatother
+\vspace{0.8cm}
+\end{Large} 
+ \begin{large}
+A dissertation submitted to the Faculty of Engineering
+% * <liaanmoolman@gmail.com> 2018-07-25T06:45:33.831Z:
+% 
+% > ulty of Engineering
+% uiliuluil
+% 
+% ^ <liaanmoolman@gmail.com> 2018-07-25T06:46:00.188Z.
+in partial fulfilment of the requirement for the degree\\
+\vspace{0.6cm}
+\end{large}
+\begin{Large}
+\textbf{Master of Engineering} \\
+\end{Large} 
+\begin{large}
+\vspace{0.6cm}
+in \\
+\vspace{0.6cm}
+\end{large}
+\begin{Large}
+\textbf{Computer and Electronic Engineering}\\
+\vspace{0.6cm}
+\end{Large} 
+\begin{large}
+at the \\
+\vspace{0.6cm}
+\end{large}
+\begin{Large}
+\textbf{North-West University}\\
+\end{Large} 
+
+\vspace{2cm}
+ \textbf{\Large{Study Leader: Prof. J.E.W. Holm}}\\
+\vspace{1cm}
+\begin{Large}
+\textbf{\date}
+\end{Large}
+}
+\pagebreak
+\end{titlepage}
+%\pagebreak
+%\hspace{1cm} \\
+%\thiswatermark{
+%\begin{pspicture}(4,28.7)(6.6,28.7)
+%    \includegraphics[scale=1]{TitlePage/declaration.pdf}
+%\end{pspicture}}
+
+\thispagestyle{empty}
+\pagebreak
+
+% \pdfbookmark[0]{Dedication}{dedication}
+% \begin{center}
+% \hspace{1cm} \\
+% \vspace{8cm}
+% \Huge{\textsc{Soli Deo Gloria}} \\
+% \vspace{0.2cm}
+% \large{\textbf{\textit{``For the glory of God alone''}}}
+% \end{center}
+% \thispagestyle{empty}
+% \pagebreak
+
+\thispagestyle{empty}
+\pagebreak
+\pagenumbering{roman}
+\renewcommand{\abstractname}{Acknowledgements}
+
+
+\addcontentsline{toc}{chapter}{Acknowledgements} %Add the acknowledgements to the TOC
+\begin{abstract}
+\thispagestyle{empty}
+\noindent
+Some Acknowledgements.
+\\ \vspace{1em} \\
+\noindent
+Mention some names:
+\begin{itemize}
+\item[] Prof. J.E.W. Holm
+\end{itemize}
+\clearpage
+\end{abstract}
+\renewcommand{\abstractname}{Abstract}
+\addcontentsline{toc}{chapter}{Abstract} %Add the Executive Summary to the TOC
+\begin{abstract}
+\thispagestyle{empty}
+\noindent
+Add some stuff here for the abstract.
+\noindent
+\begin{description}[style=multiline,leftmargin=2.4cm]
+\item[Keywords:] \textit{Machine Learning}
+\end{description}
+\clearpage
+\end{abstract}
+\renewcommand{\abstractname}{Opsomming}
+\addcontentsline{toc}{chapter}{Opsomming} %Add the Opsomming to the TOC
+\begin{abstract}
+\thispagestyle{empty}
+\noindent
+Afrikaan van bogenoemde goed.
+\\
+
+\noindent
+\begin{description}[style=multiline,leftmargin=3.1cm]
+\item[Sleutelwoorde:] \textit{Masjienleer}
+\end{description}
+\clearpage
+\end{abstract}
+
+\thispagestyle{fancy}
+\normalsize
+% \pdfbookmark[0]{Contents}{toc}
+\tableofcontents
+
+\listoffigures
+\addcontentsline{toc}{chapter}{List of Figures} %Add the list of figures to the TOC
+\listoftables
+\addcontentsline{toc}{chapter}{List of Tables}  %Add the list of tables to the TOC
+\listoflistings
+\addcontentsline{toc}{chapter}{Listings}  %Add the listings to the TOC
+
+\printnomenclature[3cm]
+\pagebreak
+%\include{Abbreviations/abbreviations}
+
+\pagenumbering{arabic}
+
+\include{Chapter_1/chapter1}
+\include{Chapter_2/chapter2}
+\include{Chapter_3/chapter3}
+\include{Chapter_4/chapter4}
+\include{Chapter_5/chapter5}
+\include{Chapter_6/chapter6}
+\include{Chapter_7/chapter7}
+
+\appendix
+%\include{AppendixA/appendixa}
+%\include{AppendixB/appendixb}
+%\include{AppendixC/appendixc}
+%\include{AppendixD/appendixd}
+%\include{AppendixE/appendixe}
+%\include{AppendixF/appendixf}
+
+\bibliographystyle{IEEEtran}
+\bibliography{Bibliography/references}
+\addcontentsline{toc}{chapter}{Bibliography}  %Add the bibliography to the TOC
+
+\end{document}
